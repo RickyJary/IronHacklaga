@@ -5,6 +5,7 @@ class Game {
         this.player = new Player(this.board);
         this.tick = 0;
         this.enemies = [];
+        this.powerUps = [];
         this.enemyTick = 100;
         this.powerUpTick = 600;
         this.liveCounter = new LiveCounter(this.board, this.player.lives);
@@ -22,8 +23,9 @@ class Game {
                 this.enemies.push(new Enemy(this.board));}
 
             if (this.tick % this.powerUpTick === 0) {
-                this.enemies.push(new PowerUp(this.board))
+                this.powerUps.push(new PowerUp(this.board))
             }
+
         }, 1000/60);
         
         this.liveCounter.draw();
@@ -36,6 +38,9 @@ class Game {
         this.enemies.forEach((enemy) => {
             enemy.move();
           });
+        this.powerUps.forEach((power) => {
+            power.move();
+          });
     }
 
     draw() {
@@ -44,12 +49,19 @@ class Game {
         this.enemies.forEach((enemy) => {
             enemy.draw();
           });
+        this.powerUps.forEach((power) => {
+            power.draw();
+          });
         
     }
 
     checkCollisions() {
         const enemy = this.enemies.find((enemy) => {
           return this.player.collideWith(enemy);
+        });
+
+        const power = this.powerUps.find((power) => {
+            return this.player.collideWith(power);
         });
     
         if (enemy) {
@@ -65,6 +77,14 @@ class Game {
             window.clearInterval(this.interval);
             this.gameOverBoard.style.display = "flex";
           }
+        }
+
+        if (power) {
+          this.powerUps = this.powerUps.filter(
+            (powerFromArr) => powerFromArr !== power
+          );
+          power.element.remove();
+          ////////////////////////////////////////////FALTA POR PONER LOS TIPOS DE POWERUP, CONDICIONES Y EFECTOS////////////////
         }
     
         this.player.bullets.find((bullet) => {
@@ -84,6 +104,8 @@ class Game {
             );
           }
         });
+
+        
     
       }
 }

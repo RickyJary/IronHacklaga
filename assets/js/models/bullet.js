@@ -24,6 +24,15 @@ class Bullet {
     move(y, vy) {
     this.y += this.vy;
     }
+
+    collideWith(entity) {
+      return (
+        this.x < entity.x + entity.width &&
+        this.x + this.width > entity.x &&
+        this.y < entity.y + entity.height &&
+        this.height + this.y > entity.y
+      );
+    }
   
     
   }
