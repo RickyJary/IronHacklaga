@@ -8,6 +8,7 @@ class Player {
     this.vy = 10;
     this.vx = 10;
     this.bullets = [];
+    this.lives = 3;
 
     this.element = document.createElement("div");
     this.element.style.position = "absolute";
@@ -106,7 +107,6 @@ setListeners() {
           this.actions.right = true;
           break;
         case " ":
-            console.log("shooting")
           this.shoot();
           break;
       }
@@ -128,6 +128,14 @@ setListeners() {
           break;
         }
     });
+}
+collideWith(entity) {
+  return (
+    this.x < entity.x + entity.width &&
+    this.x + this.width > entity.x &&
+    this.y < entity.y + entity.height &&
+    this.height + this.y > entity.y
+  );
 }
 
 

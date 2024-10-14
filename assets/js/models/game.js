@@ -7,12 +7,15 @@ class Game {
         this.enemies = [];
         this.enemyTick = 100;
         this.powerUpTick = 600;
+        this.liveCounter = new LiveCounter(this.board, this.player.lives);
+        this.gameOverBoard = document.querySelector("#game-over");
     }
 
     start () {
         this.interval = setInterval(() => {
             this.move();
-            this.draw()
+            this.draw();
+            this.checkCollisions();
             
             this.tick++
             if (this.tick % this.enemyTick === 0) {
@@ -22,7 +25,9 @@ class Game {
                 this.enemies.push(new PowerUp(this.board))
             }
         }, 1000/60);
-        console.log(this.enemies)
+        
+        this.liveCounter.draw();
+       
     }
 
     move() {
@@ -41,4 +46,44 @@ class Game {
           });
         
     }
+
+    checkCollisions() {
+        const enemy = this.enemies.find((enemy) => {
+          return this.player.collideWith(enemy);
+        });
+    
+        if (enemy) {
+          this.enemies = this.enemies.filter(
+            (enemyFromArr) => enemyFromArr !== enemy
+          );
+          enemy.element.remove();
+          this.player.lives -= 1;
+          this.liveCounter.lives = this.player.lives;
+          this.liveCounter.draw();
+    
+          if (this.player.lives === 0) {
+            window.clearInterval(this.interval);
+            this.gameOverBoard.style.display = "flex";
+          }
+        }
+    
+        this.player.bullets.find((bullet) => {
+          const enemyCollided = this.enemies.find((enemy) => {
+            return bullet.collideWith(enemy);
+          });
+    
+          if (enemyCollided) {
+            enemyCollided.element.remove();
+            this.enemies = this.enemies.filter(
+              (enemyFromArr) => enemyFromArr !== enemyCollided
+            );
+    
+            bullet.element.remove();
+            this.player.bullets = this.player.bullets.filter(
+              (bulletFromArr) => bulletFromArr !== bullet
+            );
+          }
+        });
+    
+      }
 }

@@ -36,3 +36,22 @@
     text-align: center;
     font-family: monospace;
   }
+
+  #game-over {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 640px;
+    height: 800px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: red;
+    font-size: 40px;
+    font-family: monospace;
+    display: none;
+    justify-content: center;
+    align-items: center;
+  }
