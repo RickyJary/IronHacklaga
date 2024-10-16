@@ -5,9 +5,11 @@ class Game {
         this.player = new Player(this.board);
         this.tick = 0;
         this.enemies = [];
+        this.asteroids = [];
         this.powerUps = [];
         this.enemyTick = 100;
         this.powerUpTick = 600;
+        this.asteroidTick = 100;
         this.liveCounter = new LiveCounter(this.board, this.player.lives);
         this.gameOverBoard = document.querySelector("#game-over");
     }
@@ -26,6 +28,12 @@ class Game {
                 this.powerUps.push(new PowerUp(this.board))
             }
 
+            if (this.tick % this.asteroidTick === 0) {
+                this.asteroids.push(new Asteroid(this.board))
+            }
+
+            
+
         }, 1000/60);
         
         this.liveCounter.draw();
@@ -41,6 +49,10 @@ class Game {
         this.powerUps.forEach((power) => {
             power.move();
           });
+        this.asteroids.forEach((asteroid) => {
+          
+            asteroid.move();
+        })
     }
 
     draw() {
@@ -52,6 +64,9 @@ class Game {
         this.powerUps.forEach((power) => {
             power.draw();
           });
+          this.asteroids.forEach((asteroid) => {
+            asteroid.draw();
+        })
         
     }
 
@@ -84,7 +99,7 @@ class Game {
             (powerFromArr) => powerFromArr !== power
           );
           power.element.remove();
-          ////////////////////////////////////////////FALTA POR PONER LOS TIPOS DE POWERUP, CONDICIONES Y EFECTOS////////////////
+          ////////////////////////FALTA POR PONER LOS TIPOS DE POWERUP, CONDICIONES Y EFECTOS////////////////
         }
     
         this.player.bullets.find((bullet) => {

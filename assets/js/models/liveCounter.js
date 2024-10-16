@@ -22,7 +22,7 @@ class LiveCounter {
       Array(this.lives)
         .fill("x")
         .forEach((_, index) => {
-          console.log("se está dibujando")
+          
           this.shield.style.left = `${(index + 1) * 50}px`;
           this.shield.style.top = "20px";
   
