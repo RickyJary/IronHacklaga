@@ -7,48 +7,49 @@ class Asteroid {
       
       const side = Math.floor(Math.random() * 4);
       if (side === 0) { 
-        this.x = Math.random() * this.board.clientWidth;
+        this.x = Math.floor(Math.random() * this.board.clientWidth);
         this.y = -this.height; 
       } else if (side === 1) { 
         this.x = this.board.clientWidth;
-        this.y = Math.random() * this.board.clientHeight;
+        this.y = Math.floor(Math.random() * this.board.clientHeight);
       } else if (side === 2) { 
-        this.x = Math.random() * this.board.clientWidth;
+        this.x = Math.floor(Math.random() * this.board.clientWidth);
         this.y = this.board.clientHeight;
       } else { 
         this.x = -this.width; 
-        this.y = Math.random() * this.board.clientHeight;
+        this.y = Math.floor(Math.random() * this.board.clientHeight);
       }
   
       
       if (side === 0) { 
-        this.vx = (Math.random() * 4) - 2; 
-        this.vy = Math.random() * 2; 
+        this.vx = Math.floor((Math.random() * 4) - 2); 
+        this.vy = Math.floor(Math.random() * 2); 
       } else if (side === 1) { 
-        this.vx = -(Math.random() * 2); 
-        this.vy = (Math.random() * 4) - 2; 
+        this.vx = -Math.floor((Math.random() * 2)); 
+        this.vy = Math.floor((Math.random() * 4) - 2); 
       } else if (side === 2) { 
-        this.vx = (Math.random() * 4) - 2; 
-        this.vy = -(Math.random() * 2); 
+        this.vx = Math.floor((Math.random() * 4) - 2); 
+        this.vy = -Math.floor((Math.random() * 2)); 
       } else { 
-        this.vx = Math.random() * 2; 
-        this.vy = (Math.random() * 4) - 2; 
+        this.vx = Math.floor(Math.random() * 2); 
+        this.vy = Math.floor((Math.random() * 4) - 2); 
       }
   
       this.element = document.createElement("div");
       this.element.style.position = "absolute";
-      this.element.style.backgroundColor = "white";
       this.element.style.borderRadius = "50px"
+      this.element.style.backgroundColor = "blue";
+      
 
       
     }
   
     draw() {
-        console.log("dibujando asteroide")
+
       this.element.style.width = this.width + "px";
       this.element.style.height = this.height + "px";
       this.element.style.left = this.x + "px";
-      this.element.style.top = this.y + "px"; 
+      this.element.style.bottom = this.y + "px"; 
 
       this.board.appendChild(this.element);
     }

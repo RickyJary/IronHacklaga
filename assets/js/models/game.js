@@ -7,14 +7,16 @@ class Game {
         this.enemies = [];
         this.asteroids = [];
         this.powerUps = [];
+        this.enemyShootingTick = 200;
         this.enemyTick = 100;
         this.powerUpTick = 600;
-        this.asteroidTick = 100;
+        this.asteroidTick = 50;
         this.liveCounter = new LiveCounter(this.board, this.player.lives);
         this.gameOverBoard = document.querySelector("#game-over");
     }
 
     start () {
+        this.gameOverBoard.style.display = "none";
         this.interval = setInterval(() => {
             this.move();
             this.draw();
@@ -30,6 +32,12 @@ class Game {
 
             if (this.tick % this.asteroidTick === 0) {
                 this.asteroids.push(new Asteroid(this.board))
+            }
+
+            if(this.tick % this.enemyShootingTick === 0) {
+                this.enemies.forEach((enemy) => {
+                  enemy.shoot();
+                })
             }
 
             
@@ -64,7 +72,7 @@ class Game {
         this.powerUps.forEach((power) => {
             power.draw();
           });
-          this.asteroids.forEach((asteroid) => {
+        this.asteroids.forEach((asteroid) => {
             asteroid.draw();
         })
         
@@ -78,12 +86,31 @@ class Game {
         const power = this.powerUps.find((power) => {
             return this.player.collideWith(power);
         });
+
+        const asteroid = this.asteroids.find((asteroid) => {
+            return this.player.collideWith(asteroid);
+        })
     
         if (enemy) {
           this.enemies = this.enemies.filter(
             (enemyFromArr) => enemyFromArr !== enemy
           );
           enemy.element.remove();
+          this.player.lives -= 1;
+          this.liveCounter.lives = this.player.lives;
+          this.liveCounter.draw();
+    
+          if (this.player.lives === 0) {
+            window.clearInterval(this.interval);
+            this.gameOverBoard.style.display = "flex";
+          }
+        }
+
+        if (asteroid) {
+          this.asteroids = this.asteroids.filter(
+            (asteroidFromArr) => asteroidFromArr !== asteroid
+          );
+          asteroid.element.remove();
           this.player.lives -= 1;
           this.liveCounter.lives = this.player.lives;
           this.liveCounter.draw();
@@ -120,6 +147,27 @@ class Game {
           }
         });
 
+
+        const enemiesBullets = []
+        this.enemies.forEach(enemy => enemiesBullets.push(...enemy.enemyBullets))
+        const collidedBullet = enemiesBullets.find(bullet => this.player.collideWith(bullet))
+        if (collidedBullet) {
+          this.enemies.forEach(enemy => {
+            enemy.enemyBullets = enemy.enemyBullets.filter(bullet => bullet !== collidedBullet);
+          });
+
+          if (collidedBullet.element) {
+            collidedBullet.element.remove();
+          }
+          this.player.lives -= 1;
+          this.liveCounter.lives = this.player.lives;
+          this.liveCounter.draw();
+    
+          if (this.player.lives === 0) {
+            window.clearInterval(this.interval);
+            this.gameOverBoard.style.display = "flex";
+          }
+        }
         
     
       }
