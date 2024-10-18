@@ -9,6 +9,7 @@ class Player {
     this.vx = 10;
     this.bullets = [];
     this.lives = 3;
+    this.shootingRate = 1000;
 
     this.element = document.createElement("div");
     this.element.style.position = "absolute";
@@ -87,7 +88,7 @@ shoot() {
 
       setTimeout(() => {
         this.actions.canShoot = true;
-      }, 1000);
+      }, this.shootingRate);
     }
   }
 

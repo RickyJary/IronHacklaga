@@ -24,11 +24,14 @@ class Game {
             
             this.tick++
             if (this.tick % this.enemyTick === 0) {
-                this.enemies.push(new Enemy(this.board));}
+              this.enemies.push(new Enemy(this.board))
+              }
 
             if (this.tick % this.powerUpTick === 0) {
-                this.powerUps.push(new PowerUp(this.board))
-            }
+              const types = ["speed", "life", "rate"];
+              const randomType = types[Math.floor(Math.random() * types.length)];
+              this.powerUps.push(new PowerUp(this.board, randomType));
+            } 
 
             if (this.tick % this.asteroidTick === 0) {
                 this.asteroids.push(new Asteroid(this.board))
@@ -126,7 +129,22 @@ class Game {
             (powerFromArr) => powerFromArr !== power
           );
           power.element.remove();
-          ////////////////////////FALTA POR PONER LOS TIPOS DE POWERUP, CONDICIONES Y EFECTOS////////////////
+          switch (power.type) {
+            case "speed":
+                this.player.vy += 2;
+                this.player.vx += 2;
+                break;
+            case "life":
+                this.player.lives += 1;
+                this.liveCounter.lives = this.player.lives;
+                this.liveCounter.draw();
+                break;
+            case "rate":
+                this.player.shootingRate -= 100;
+                break;
+            default:
+                console.log("Tipo de power-up no reconocido");
+        }
         }
     
         this.player.bullets.find((bullet) => {

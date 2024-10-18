@@ -1,15 +1,28 @@
 class PowerUp extends Enemy {
-    constructor(board){
+    constructor(board, type){
         super(board)
         this.width = 30;
         this.height = 30;
         this.y = this.board.clientHeight;
         this.x = Math.random() * this.board.clientWidth;
         this.vy = -10;
+        this.type = type;
     
         this.element = document.createElement("div");
         this.element.style.position = "absolute";
-        this.element.style.backgroundColor = "yellow";
+        switch (this.type) {
+          case "speed":
+              this.element.style.backgroundColor = "blue";
+              break;
+          case "life":
+              this.element.style.backgroundColor = "red";
+              break;
+          case "rate":
+              this.element.style.backgroundColor = "green";
+              break;
+          default:
+              this.element.style.backgroundColor = "yellow";
+      }
     }
 
 draw() {
