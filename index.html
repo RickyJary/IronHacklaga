@@ -24,11 +24,13 @@
               />
             </div>
             <button type="submit" class="submit-btn">Save</button>
-            <div id="highscore">
-              <h2 class="form-title">Highest Scores</h2>
-            </div>
+            
           </form>
-
+          <div id="highscore" class="hidden">
+            <h2 class="form-title">Highest Scores</h2>
+            <div id="highscore-board">
+            </div>
+          </div>
           <button id="restart-btn" class="restart-btn">
             Try Again on Chill!
           </button>
@@ -51,5 +53,7 @@
     <script src="/assets/js/main.js"></script>
 
     <audio id="bg-sound" src="/assets/sounds/Space Invasion.mp3"></audio>
+    <audio id="enemy-shoot" src="/assets/sounds/[downloader.vevioz.com] RETRO LASER GUN - Gaming Sound Effects HD FREE NO Copyright.mp3"></audio>
+    <audio id="player-shoot" src="/assets/sounds/laser-shot-ingame-230500.mp3"></audio>
   </body>
 </html>

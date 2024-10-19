@@ -9,6 +9,7 @@ class Player {
     this.vx = 10;
     this.bullets = [];
     this.lives = 3;
+    this.shootingSound = document.querySelector("#player-shoot")
     this.shootingRate = 1000;
 
     this.element = document.createElement("div");
@@ -91,6 +92,7 @@ shoot() {
         this.actions.canShoot = true;
       }, this.shootingRate);
     }
+    this.shootingSound.play();
   }
 
 setListeners() {

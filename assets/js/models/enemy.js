@@ -7,7 +7,7 @@ class Enemy {
         this.x = Math.random() * this.board.clientWidth;
         this.vy = -2;
         this.enemyBullets = [];
-
+        this.shootingAudio = document.querySelector("#enemy-shoot")
         this.element = document.createElement("div");
         this.element.style.position = "absolute";
         this.element.style.backgroundColor = "green";
@@ -40,6 +40,6 @@ class Enemy {
               this.y + this.height / 2
             )
           )
-        
+        this.shootingAudio.play()
     }
 }

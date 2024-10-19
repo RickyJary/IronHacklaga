@@ -12,23 +12,35 @@ window.addEventListener("load", function(){
     const gameOverBoard = document.querySelector("#game-over");
 
     form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        
-        
+        event.preventDefault(); 
         const formData = new FormData(form);
         const gameScore = game.score;
         const dataToSave = {
             ...Object.fromEntries(formData),
             score: gameScore
         };
-        console.log(gameScore)
         let storedData = JSON.parse(sessionStorage.getItem('scoreData')) || [];
         storedData.push(dataToSave);
         storedData.sort((a, b) => b.score - a.score);
         storedData = storedData.slice(0, 3);
         sessionStorage.setItem('scoreData', JSON.stringify(storedData));
+        form.classList.add('hidden');
+        renderHighScores();
+        highscore.classList.remove('hidden');
     });
-
+    
+    function renderHighScores() {
+        const storedData = JSON.parse(sessionStorage.getItem('scoreData')) || [];
+        const highscoreBoard = document.querySelector("#highscore-board");
+    
+        highscoreBoard.innerHTML = "";
+        storedData.forEach((data, index) => {
+            const scoreElement = document.createElement("div");
+            scoreElement.textContent = `${index + 1}. ${data.name}: ${data.score}`;
+            highscoreBoard.appendChild(scoreElement);
+        });
+    }
+    
     // form.addEventListener("submit", (event) => {
     //     event.preventDefault();
     //     const formData = new FormData(form);
@@ -84,14 +96,29 @@ window.addEventListener("load", function(){
     function listenGameOver() {
         document.addEventListener('game-over', (event) => {
             console.log(event.detail);
-
-            
-            
-            if (event.detail.score < 100) {
+    
+            let storedData = JSON.parse(sessionStorage.getItem('scoreData')) || [];
+    
+            const isHighScore = storedData.length < 3 || event.detail.score > storedData[storedData.length - 1].score;
+    
+            if (isHighScore) {
+                form.classList.remove('hidden');
+            } else {
                 form.classList.add('hidden');
             }
-
             gameOverBoard.style.display = "flex";
-        })
+        });
+    }
+    function renderHighScores() {
+        const storedData = JSON.parse(sessionStorage.getItem('scoreData')) || [];
+        const highscoreBoard = document.querySelector("#highscore-board");
+    
+        highscoreBoard.innerHTML = "";
+    
+        storedData.forEach((data, index) => {
+            const scoreElement = document.createElement("div");
+            scoreElement.textContent = `${index + 1}. ${data.name}: ${data.score}`;
+            highscoreBoard.appendChild(scoreElement);
+        });
     }
 })

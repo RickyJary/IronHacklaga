@@ -57,7 +57,7 @@ class Game {
           this.tickRate += this.isHardMode ? 0.5 : 0.2;
         }
       }
-      
+
     }, 1000 / 60);
 
     this.liveCounter.draw();
@@ -166,7 +166,6 @@ class Game {
           (enemyFromArr) => enemyFromArr !== enemyCollided
         );
         this.score += 100;
-        
 
         bullet.element.remove();
         this.player.bullets = this.player.bullets.filter(
