@@ -1,8 +1,8 @@
 class Enemy {
     constructor(board){
         this.board = board;
-        this.width = 80;
-        this.height = 50;
+        this.width = 60;
+        this.height = 80;
         this.y = this.board.clientHeight;
         this.x = Math.random() * this.board.clientWidth;
         this.vy = -2;
@@ -10,7 +10,10 @@ class Enemy {
         this.shootingAudio = document.querySelector("#enemy-shoot")
         this.element = document.createElement("div");
         this.element.style.position = "absolute";
-        this.element.style.backgroundColor = "green";
+        this.element.style.backgroundImage = "url('/assets/img/enemy.png')"
+        this.element.style.backgroundSize = "cover"
+      this.element.style.backgroundPosition = "center";
+        
     }
     draw() {
         this.element.style.width = this.width + "px";
@@ -21,6 +24,7 @@ class Enemy {
         this.board.appendChild(this.element);
         this.enemyBullets.forEach((bullet) => {
           bullet.draw();
+          
         });
       }
     
@@ -36,8 +40,8 @@ class Enemy {
           this.enemyBullets.push(
             new EnemyBullet(
               this.board,
-              this.x + this.width / 2,
-              this.y + this.height / 2
+              this.x + this.width / 3,
+              this.y + this.height / 3
             )
           )
         this.shootingAudio.play()

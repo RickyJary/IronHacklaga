@@ -4,12 +4,14 @@ class Bullet {
       this.x = x;
       this.y = y;
       this.width = 10;
-      this.height = 10;
+      this.height = 30;
       this.vy = 15;
   
       this.element = document.createElement("div");
       this.element.style.position = "absolute";
-      this.element.style.backgroundColor = "red";
+      this.element.style.backgroundImage = "url('/assets/img/missile.gif')"
+      this.element.style.backgroundSize = "cover"
+      this.element.style.backgroundPosition = "center";
     }
   
     draw() {

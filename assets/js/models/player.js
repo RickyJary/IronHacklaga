@@ -1,7 +1,7 @@
 class Player {
     constructor(board){
     this.board = board
-    this.width = 60;
+    this.width = 40;
     this.height = 60;
     this.y = 0;
     this.x = 320;
@@ -17,6 +17,7 @@ class Player {
     this.element.className = "player";
     this.element.style.backgroundImage = "url('/assets/img/player.gif')"
     this.element.style.backgroundSize = "cover";
+    
     this.element.style.backgroundPosition = "center";
     this.element.style.backgroundColor = "transparent"
 
@@ -77,12 +78,13 @@ draw() {
 }
 
 shoot() {
+  
     if (this.actions.canShoot) {
       this.bullets.push(
         new Bullet(
           this.board,
-          this.x + this.width / 2,
-          this.y + this.height / 2
+          this.x + this.width / 2.5,
+          this.y + this.height / 2.5
         )
       );
 
@@ -93,6 +95,7 @@ shoot() {
       }, this.shootingRate);
     }
     this.shootingSound.play();
+    
   }
 
 setListeners() {

@@ -136,6 +136,7 @@ class Game {
       this.powerUps = this.powerUps.filter(
         (powerFromArr) => powerFromArr !== power
       );
+      
       power.element.remove();
       switch (power.type) {
         case "speed":
@@ -146,6 +147,7 @@ class Game {
           this.player.lives += 1;
           this.liveCounter.lives = this.player.lives;
           this.liveCounter.draw();
+          
           break;
         case "rate":
           this.player.shootingRate -= 100;
@@ -161,6 +163,7 @@ class Game {
       });
 
       if (enemyCollided) {
+        
         enemyCollided.element.remove();
         this.enemies = this.enemies.filter(
           (enemyFromArr) => enemyFromArr !== enemyCollided
@@ -187,12 +190,13 @@ class Game {
       });
 
       if (collidedBullet.element) {
+        
         collidedBullet.element.remove();
       }
       this.player.lives -= 1;
       this.liveCounter.lives = this.player.lives;
       this.liveCounter.draw();
-
+      
       if (this.player.lives === 0) {
         this.gameOver();
       }
