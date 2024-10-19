@@ -2,7 +2,7 @@ class Player {
     constructor(board){
     this.board = board
     this.width = 60;
-    this.height = 40;
+    this.height = 60;
     this.y = 0;
     this.x = 320;
     this.vy = 10;
@@ -14,9 +14,10 @@ class Player {
     this.element = document.createElement("div");
     this.element.style.position = "absolute";
     this.element.className = "player";
-    this.element.style.backgroundColor = "white"
+    this.element.style.backgroundImage = "url('/assets/img/player.gif')"
+    this.element.style.backgroundSize = "cover";
     this.element.style.backgroundPosition = "center";
-    
+    this.element.style.backgroundColor = "transparent"
 
     this.setListeners();
     this.actions = {

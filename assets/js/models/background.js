@@ -8,11 +8,11 @@ class Background {
       this.height = this.board.clientHeight;
   
       this.image1 = document.createElement("img"); // === new Image();
-      this.image1.src = "/assets/img/spacebgphoto.jpg";
+      this.image1.src = "/assets/img/newbg.png";
       this.image1.style.position = "absolute";
   
       this.image2 = document.createElement("img"); // === new Image();
-      this.image2.src = "/assets/img/spacebgphoto.jpg";
+      this.image2.src = "/assets/img/newbg.png";
       this.image2.style.position = "absolute";
     }
   

@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+  </head>
+  <body>
     <div class="container">
-        <div id="game-board">
-            <button id="start-btn" class="start-btn">Start Game!</button>
-            <div id="game-over">
-                <h1>Game Over</h1>
-                <button id = "restart-btn" class="restart-btn">Restart Game!</button>
+      <div id="game-board">
+        <button id="start-btn" class="start-btn">Chill Game!</button>
+        <button id="start-btn2" class="start-btn2">Xtreme Game!</button>
+        <div id="game-over">
+          <h1>Game Over</h1>
+          <form id="score-submit" class="form-container" action="submit">
+            <h2 class="form-title">Submit Your Score</h2>
+            <div class="form-field">
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your name"
+              />
             </div>
+            <button type="submit" class="submit-btn">Save</button>
+            <div id="highscore">
+              <h2 class="form-title">Highest Scores</h2>
+            </div>
+          </form>
+
+          <button id="restart-btn" class="restart-btn">
+            Try Again on Chill!
+          </button>
+          <button id="restart-btn2" class="restart-btn2">
+            Try Again on Xtreme!
+          </button>
         </div>
+      </div>
     </div>
 
     <script src="assets/js/models/enemy.js"></script>
@@ -29,5 +51,5 @@
     <script src="/assets/js/main.js"></script>
 
     <audio id="bg-sound" src="/assets/sounds/Space Invasion.mp3"></audio>
-</body>
+  </body>
 </html>
