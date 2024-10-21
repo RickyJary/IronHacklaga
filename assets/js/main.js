@@ -6,7 +6,7 @@ window.addEventListener("load", function(){
     const board = document.querySelector("#game-board");
     const restartButton = document.querySelector("#restart-btn");
     const restartButton2 = document.querySelector("#restart-btn2");
-    const bgAudio = document.querySelector("#bg-sound")
+    
     const form = document.querySelector("#score-submit")
     const highscore = document.querySelector("#highscore")
     const gameOverBoard = document.querySelector("#game-over");
@@ -60,7 +60,7 @@ window.addEventListener("load", function(){
         game = new Game(board);
         game.start();
         listenGameOver();
-        bgAudio.play();
+        
     })
 
     startButton2.addEventListener("click", function(){
@@ -68,7 +68,7 @@ window.addEventListener("load", function(){
         game = new Game(board, true);
         game.start();
         listenGameOver();
-        bgAudio.play();
+        
     })
 
 
@@ -79,8 +79,8 @@ window.addEventListener("load", function(){
         game.start();
         listenGameOver();
         restartButton.style.display = "flex";
-        bgAudio.currentTime = 0;
-        bgAudio.play();
+        
+        
     })
 
     restartButton2.addEventListener("click", function(){
@@ -89,8 +89,8 @@ window.addEventListener("load", function(){
         game.start();
         listenGameOver();
         restartButton.style.display = "flex";
-        bgAudio.currentTime = 0;
-        bgAudio.play();
+        
+        
     })
 
     function listenGameOver() {

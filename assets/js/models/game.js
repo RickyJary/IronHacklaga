@@ -17,9 +17,14 @@ class Game {
 
     this.liveCounter = new LiveCounter(this.board, this.player.lives);
     this.gameOverBoard = document.querySelector("#game-over");
+    this.bgAudio = document.querySelector("#bg-sound")
+    this.gameOverSound = document.querySelector("#game-over-sound")
   }
 
   start() {
+    this.gameOverSound.pause();
+    this.bgAudio.currentTime = 0;
+    this.bgAudio.play();
     this.gameOverBoard.style.display = "none";
     this.interval = setInterval(() => {
       this.move();
@@ -57,7 +62,6 @@ class Game {
           this.tickRate += this.isHardMode ? 0.5 : 0.2;
         }
       }
-
     }, 1000 / 60);
 
     this.liveCounter.draw();
@@ -122,6 +126,7 @@ class Game {
       this.asteroids = this.asteroids.filter(
         (asteroidFromArr) => asteroidFromArr !== asteroid
       );
+      
       asteroid.element.remove();
       this.player.lives -= 1;
       this.liveCounter.lives = this.player.lives;
@@ -136,7 +141,7 @@ class Game {
       this.powerUps = this.powerUps.filter(
         (powerFromArr) => powerFromArr !== power
       );
-      
+
       power.element.remove();
       switch (power.type) {
         case "speed":
@@ -147,7 +152,7 @@ class Game {
           this.player.lives += 1;
           this.liveCounter.lives = this.player.lives;
           this.liveCounter.draw();
-          
+
           break;
         case "rate":
           this.player.shootingRate -= 100;
@@ -163,11 +168,16 @@ class Game {
       });
 
       if (enemyCollided) {
+        enemyCollided.element.style.backgroundImage =
+          "url('/assets/img/xplosion2.gif')";
         
-        enemyCollided.element.remove();
-        this.enemies = this.enemies.filter(
-          (enemyFromArr) => enemyFromArr !== enemyCollided
-        );
+        setTimeout(() => {
+          enemyCollided.element.style.backgroundImage = "";
+          enemyCollided.element.remove();
+          this.enemies = this.enemies.filter(
+            (enemyFromArr) => enemyFromArr !== enemyCollided
+          );
+        }, 500);
         this.score += 100;
 
         bullet.element.remove();
@@ -190,13 +200,12 @@ class Game {
       });
 
       if (collidedBullet.element) {
-        
         collidedBullet.element.remove();
       }
       this.player.lives -= 1;
       this.liveCounter.lives = this.player.lives;
       this.liveCounter.draw();
-      
+
       if (this.player.lives === 0) {
         this.gameOver();
       }
@@ -205,10 +214,16 @@ class Game {
 
   gameOver() {
     clearInterval(this.interval);
-    document.dispatchEvent(new CustomEvent('game-over', {
-      detail: {
-        score: this.score
-      }
-    }))
+    this.bgAudio.pause();
+    this.gameOverSound.currentTime = 15;
+    this.gameOverSound.play();
+    
+    document.dispatchEvent(
+      new CustomEvent("game-over", {
+        detail: {
+          score: this.score,
+        },
+      })
+    );
   }
 }

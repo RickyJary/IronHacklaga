@@ -78,7 +78,7 @@ draw() {
 }
 
 shoot() {
-  
+  const soundInstance = new Audio(this.shootingSound.src);
     if (this.actions.canShoot) {
       this.bullets.push(
         new Bullet(
@@ -86,7 +86,9 @@ shoot() {
           this.x + this.width / 2.5,
           this.y + this.height / 2.5
         )
+        
       );
+      soundInstance.play();
 
       this.actions.canShoot = false;
 
@@ -94,7 +96,7 @@ shoot() {
         this.actions.canShoot = true;
       }, this.shootingRate);
     }
-    this.shootingSound.play();
+    
     
   }
 

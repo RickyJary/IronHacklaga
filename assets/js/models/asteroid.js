@@ -38,7 +38,9 @@ class Asteroid {
       this.element = document.createElement("div");
       this.element.style.position = "absolute";
       this.element.style.borderRadius = "50px"
-      this.element.style.backgroundColor = "blue";
+      this.element.style.backgroundImage = "url('/assets/img/moon.png')"
+        this.element.style.backgroundSize = "cover"
+      this.element.style.backgroundPosition = "center";
       
 
       
