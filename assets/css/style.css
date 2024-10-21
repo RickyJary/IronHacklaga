@@ -320,3 +320,17 @@ img {
   background: rgb(63,206,251);
 background: radial-gradient(circle, rgba(63,206,251,1) 0%, rgba(238,252,255,1) 100%);
 }
+
+.enemy{
+  position: absolute;
+  background-image: url("/assets/img/enemy.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.explosion {
+  position: absolute;
+  background-image: url("/assets/img/xplosion2.gif");
+  background-size: cover;
+  background-position: center;
+}

@@ -169,14 +169,14 @@ class Game {
 
       if (enemyCollided) {
         enemyCollided.element.style.backgroundImage =
-          "url('/assets/img/xplosion2.gif')";
+          "url('/assets/img/xplosion.gif')";
         
         setTimeout(() => {
-          enemyCollided.element.style.backgroundImage = "";
           enemyCollided.element.remove();
           this.enemies = this.enemies.filter(
             (enemyFromArr) => enemyFromArr !== enemyCollided
           );
+          
         }, 500);
         this.score += 100;
 
