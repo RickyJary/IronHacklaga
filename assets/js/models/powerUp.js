@@ -5,7 +5,7 @@ class PowerUp extends Enemy {
     this.height = 30;
     this.y = this.board.clientHeight;
     this.x = Math.random() * this.board.clientWidth;
-    this.vy = -2;
+    this.vy = -8;
     this.type = type;
 
     this.element = document.createElement("div");

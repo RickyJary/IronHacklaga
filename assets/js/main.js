@@ -103,16 +103,5 @@ window.addEventListener("load", function () {
       gameOverBoard.style.display = "flex";
     });
   }
-  function renderHighScores() {
-    const storedData = JSON.parse(localStorage.getItem("scoreData")) || [];
-    const highscoreBoard = document.querySelector("#highscore-board");
-
-    highscoreBoard.innerHTML = "";
-
-    storedData.forEach((data, index) => {
-      const scoreElement = document.createElement("div");
-      scoreElement.textContent = `${index + 1}. ${data.name}: ${data.score}`;
-      highscoreBoard.appendChild(scoreElement);
-    });
-  }
+ 
 });

@@ -33,18 +33,18 @@ class Game {
       this.checkCollisions();
 
       this.tick++;
-      
+
       this.score = this.tick;
       if (this.tick % Math.floor(this.enemyTick / this.tickRate) === 0) {
         this.enemies.push(new Enemy(this.board));
       }
 
       if (this.tick % this.powerUpTick === 0) {
-        
+
         const types = ["speed", "life", "rate"];
         const randomType = types[Math.floor(Math.random() * types.length)];
         this.powerUps.push(new PowerUp(this.board, randomType));
-        
+
       }
 
       if (this.tick % Math.floor(this.asteroidTick / this.tickRate) === 0) {
@@ -52,8 +52,7 @@ class Game {
       }
 
       if (
-        this.tick % Math.floor(this.enemyShootingTick / this.tickRate) ===
-        0
+        this.tick % Math.floor(this.enemyShootingTick / this.tickRate) === 0
       ) {
         this.enemies.forEach((enemy) => {
           enemy.shoot();
@@ -66,7 +65,7 @@ class Game {
           this.tickRate += this.isHardMode ? 0.5 : 0.2;
         }
       }
-      
+
       this.scoreBoard.innerHTML = `Your Score: ${this.score}`
     }, 1000 / 60);
 
@@ -114,7 +113,10 @@ class Game {
       return this.player.collideWith(asteroid);
     });
 
-    if (enemy) {
+    if (enemy) { 
+      enemy.enemyBullets.forEach((enemyBullet) => {
+        enemyBullet.element.remove();
+      });
       this.enemies = this.enemies.filter(
         (enemyFromArr) => enemyFromArr !== enemy
       );
@@ -132,7 +134,7 @@ class Game {
       this.asteroids = this.asteroids.filter(
         (asteroidFromArr) => asteroidFromArr !== asteroid
       );
-      
+
       asteroid.element.remove();
       this.player.lives -= 1;
       this.liveCounter.lives = this.player.lives;
@@ -144,10 +146,10 @@ class Game {
     }
 
     if (power) {
-      
+
       this.powerUps = this.powerUps.filter(
         (powerFromArr) => powerFromArr !== power
-        
+
       );
 
       power.element.remove();
@@ -178,15 +180,18 @@ class Game {
       if (enemyCollided) {
         enemyCollided.element.style.backgroundImage =
           "url('/assets/img/xplosion.gif')";
-        
-        setTimeout(() => {
-          enemyCollided.element.remove();
-          this.enemies = this.enemies.filter(
-            (enemyFromArr) => enemyFromArr !== enemyCollided
-          );
+
+          setTimeout(() => {
           
-        }, 500);
-        
+            enemyCollided.enemyBullets.forEach((enemyBullet) => {
+              enemyBullet.element.remove();
+            });
+            this.enemies = this.enemies.filter(
+              (enemyFromArr) => enemyFromArr !== enemyCollided
+            );
+      
+          }, 500);
+
         bullet.element.remove();
         this.player.bullets = this.player.bullets.filter(
           (bulletFromArr) => bulletFromArr !== bullet
@@ -205,11 +210,9 @@ class Game {
         enemy.enemyBullets = enemy.enemyBullets.filter(
           (bullet) => bullet !== collidedBullet
         );
+        collidedBullet.element.remove();
       });
 
-      if (collidedBullet.element) {
-        collidedBullet.element.remove();
-      }
       this.player.lives -= 1;
       this.liveCounter.lives = this.player.lives;
       this.liveCounter.draw();
@@ -223,9 +226,11 @@ class Game {
   gameOver() {
     clearInterval(this.interval);
     this.bgAudio.pause();
+    this.player.actions.canShoot = false;
     this.gameOverSound.currentTime = 15;
     this.gameOverSound.play();
-    
+
+
     document.dispatchEvent(
       new CustomEvent("game-over", {
         detail: {

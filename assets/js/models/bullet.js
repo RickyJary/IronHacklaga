@@ -13,6 +13,7 @@ class Bullet {
       this.element.style.backgroundSize = "cover"
       this.element.style.backgroundPosition = "center";
 
+      
       this.board.appendChild(this.element);
     }
   
@@ -35,6 +36,7 @@ class Bullet {
         this.y < entity.y + entity.height &&
         this.height + this.y > entity.y
       );
+
     }
   
     
