@@ -14,6 +14,9 @@ class Background {
       this.image2 = document.createElement("img"); // === new Image();
       this.image2.src = "/assets/img/newbg.png";
       this.image2.style.position = "absolute";
+
+      this.board.appendChild(this.image1);
+      this.board.appendChild(this.image2);
     }
   
     draw() {
@@ -28,9 +31,6 @@ class Background {
   
       this.image2.style.left = this.x + "px";
       this.image2.style.bottom = this.y + this.height + "px";
-  
-      this.board.appendChild(this.image1);
-      this.board.appendChild(this.image2);
     }
 
     move () {

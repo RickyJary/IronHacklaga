@@ -3,6 +3,7 @@ class Asteroid {
       this.board = board;
       this.width = 50; 
       this.height = 50;
+      
   
       
       const side = Math.floor(Math.random() * 4);
@@ -42,7 +43,7 @@ class Asteroid {
         this.element.style.backgroundSize = "cover"
       this.element.style.backgroundPosition = "center";
       
-
+      this.board.appendChild(this.element);
       
     }
   
@@ -53,7 +54,6 @@ class Asteroid {
       this.element.style.left = this.x + "px";
       this.element.style.bottom = this.y + "px"; 
 
-      this.board.appendChild(this.element);
     }
   
     move() {

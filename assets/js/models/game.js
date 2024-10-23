@@ -19,6 +19,7 @@ class Game {
     this.gameOverBoard = document.querySelector("#game-over");
     this.bgAudio = document.querySelector("#bg-sound")
     this.gameOverSound = document.querySelector("#game-over-sound")
+    this.scoreBoard = document.querySelector("#score")
   }
 
   start() {
@@ -32,15 +33,18 @@ class Game {
       this.checkCollisions();
 
       this.tick++;
+      
       this.score = this.tick;
       if (this.tick % Math.floor(this.enemyTick / this.tickRate) === 0) {
         this.enemies.push(new Enemy(this.board));
       }
 
       if (this.tick % this.powerUpTick === 0) {
+        
         const types = ["speed", "life", "rate"];
         const randomType = types[Math.floor(Math.random() * types.length)];
         this.powerUps.push(new PowerUp(this.board, randomType));
+        
       }
 
       if (this.tick % Math.floor(this.asteroidTick / this.tickRate) === 0) {
@@ -62,6 +66,8 @@ class Game {
           this.tickRate += this.isHardMode ? 0.5 : 0.2;
         }
       }
+      
+      this.scoreBoard.innerHTML = `Your Score: ${this.score}`
     }, 1000 / 60);
 
     this.liveCounter.draw();
@@ -138,8 +144,10 @@ class Game {
     }
 
     if (power) {
+      
       this.powerUps = this.powerUps.filter(
         (powerFromArr) => powerFromArr !== power
+        
       );
 
       power.element.remove();
@@ -178,12 +186,12 @@ class Game {
           );
           
         }, 500);
-        this.score += 100;
-
+        
         bullet.element.remove();
         this.player.bullets = this.player.bullets.filter(
           (bulletFromArr) => bulletFromArr !== bullet
         );
+        this.tick += 100;
       }
     });
 

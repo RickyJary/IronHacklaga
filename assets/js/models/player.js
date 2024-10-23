@@ -29,6 +29,7 @@ class Player {
         right: false,
         canShoot: true
         };
+    this.board.appendChild(this.element);
 }
 
 move() {
@@ -71,7 +72,7 @@ draw() {
     this.element.style.left = this.x + "px";
     this.element.style.bottom = this.y + "px";
 
-    this.board.appendChild(this.element);
+    
     this.bullets.forEach((bullet) => {
         bullet.draw();
       });

@@ -4,7 +4,7 @@ class Enemy {
         this.width = 60;
         this.height = 80;
         this.y = this.board.clientHeight;
-        this.x = Math.random() * this.board.clientWidth;
+        this.x = (Math.random() * this.board.clientWidth)-this.width;
         this.vy = -2;
         this.enemyBullets = [];
         this.shootingAudio = document.querySelector("#enemy-shoot")
@@ -13,6 +13,9 @@ class Enemy {
         this.element.style.backgroundImage = "url('/assets/img/enemy.png')"
         this.element.style.backgroundSize = "cover"
       this.element.style.backgroundPosition = "center";
+      if(this.x < 0){
+        this.x = 0;
+      }
         
     }
     draw() {
