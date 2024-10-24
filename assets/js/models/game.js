@@ -101,6 +101,7 @@ class Game {
   }
 
   checkCollisions() {
+    
     const enemy = this.enemies.find((enemy) => {
       return this.player.collideWith(enemy);
     });
@@ -182,13 +183,13 @@ class Game {
           "url('/assets/img/xplosion.gif')";
 
           setTimeout(() => {
-          
-            enemyCollided.enemyBullets.forEach((enemyBullet) => {
-              enemyBullet.element.remove();
-            });
             this.enemies = this.enemies.filter(
               (enemyFromArr) => enemyFromArr !== enemyCollided
             );
+            enemyCollided.element.remove();
+            enemyCollided.enemyBullets.forEach((enemyBullet) => {
+              enemyBullet.element.remove();
+            });
       
           }, 500);
 

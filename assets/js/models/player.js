@@ -5,8 +5,8 @@ class Player {
     this.height = 60;
     this.y = 0;
     this.x = 320;
-    this.vy = 10;
-    this.vx = 10;
+    this.vy = 7;
+    this.vx = 7;
     this.bullets = [];
     this.lives = 3;
     this.shootingSound = document.querySelector("#player-shoot")
@@ -90,13 +90,13 @@ class Player {
         )
         
       );
-      shootingSound.play();
-
+      
       this.actions.canShoot = false;
-
+      
       setTimeout(() => {
         this.actions.canShoot = true;
       }, this.shootingRate);
+      shootingSound.play();
     }
 
 

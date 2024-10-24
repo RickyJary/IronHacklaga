@@ -53,6 +53,8 @@ class Asteroid {
       this.element.style.height = this.height + "px";
       this.element.style.left = this.x + "px";
       this.element.style.bottom = this.y + "px"; 
+      this.element.style.animation = "rotate 5s linear infinite";
+
 
     }
   

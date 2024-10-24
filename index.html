@@ -1,60 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Game</title>
-    <link rel="stylesheet" href="/assets/css/style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div id="score"></div>
-      <div id="game-board">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iron Hacklaga</title>
+  <link rel="icon" href="/assets/img/icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="/assets/css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <div id="score"></div>
+    <div id="game-board">
+      
         <button id="start-btn" class="start-btn">Chill Game!</button>
         <button id="start-btn2" class="start-btn2">Xtreme Game!</button>
-        <div id="game-over">
-          <h1>Game Over</h1>
-          <form id="score-submit" class="form-container" action="submit">
-            <h2 class="form-title">Submit Your Score</h2>
-            <div class="form-field">
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="Enter your name"
-              />
-            </div>
-            <button type="submit" class="submit-btn">Save</button>
-          </form>
-          <div id="highscore" class="hidden">
-            <h2 class="form-title">Highest Scores</h2>
-            <div id="highscore-board">
-            </div>
+      </div>
+
+      <div id="game-over">
+        <h1>Game Over</h1>
+        <form id="score-submit" class="form-container" action="submit">
+          <h2 class="form-title">Submit Your Score</h2>
+          <div class="form-field">
+            <input type="text" name="name" id="name" placeholder="Enter your name" />
           </div>
-          <button id="restart-btn" class="restart-btn">
-            Try Again on Chill!
-          </button>
-          <button id="restart-btn2" class="restart-btn2">
-            Try Again on Xtreme!
-          </button>
+          <button type="submit" class="submit-btn">Save</button>
+        </form>
+        <div id="highscore" class="hidden">
+          <h2 class="form-title">Highest Scores</h2>
+          <div id="highscore-board">
+          </div>
         </div>
+        <button id="restart-btn" class="restart-btn">
+          Try Again on Chill!
+        </button>
+        <button id="restart-btn2" class="restart-btn2">
+          Try Again on Xtreme!
+        </button>
       </div>
     </div>
+  </div>
 
-    <script src="assets/js/models/enemy.js"></script>
-    <script src="assets/js/models/asteroid.js"></script>
-    <script src="assets/js/models/powerUp.js"></script>
-    <script src="assets/js/models/bullet.js"></script>
-    <script src="assets/js/models/enemyBullet.js"></script>
-    <script src="assets/js/models/player.js"></script>
-    <script src="assets/js/models/liveCounter.js"></script>
-    <script src="assets/js/models/background.js"></script>
-    <script src="assets/js/models/game.js"></script>
-    <script src="/assets/js/main.js"></script>
+  <script src="assets/js/models/enemy.js"></script>
+  <script src="assets/js/models/asteroid.js"></script>
+  <script src="assets/js/models/powerUp.js"></script>
+  <script src="assets/js/models/bullet.js"></script>
+  <script src="assets/js/models/enemyBullet.js"></script>
+  <script src="assets/js/models/player.js"></script>
+  <script src="assets/js/models/liveCounter.js"></script>
+  <script src="assets/js/models/background.js"></script>
+  <script src="assets/js/models/game.js"></script>
+  <script src="/assets/js/main.js"></script>
 
-    <audio id="bg-sound" src="/assets/sounds/Space Invasion.mp3" loop></audio>
-    <audio id="enemy-shoot" src="/assets/sounds/[downloader.vevioz.com] RETRO LASER GUN - Gaming Sound Effects HD FREE NO Copyright.mp3"></audio>
-    <audio id="player-shoot" src="/assets/sounds/laser-shot-ingame-230500.mp3"></audio>
-    <audio id="game-over-sound" src="/assets/sounds/Game Over_ Galaga '90 (TurboGrafx-16).mp3"></audio>
-  </body>
+  <audio id="bg-sound" src="/assets/sounds/Space Invasion.mp3" loop></audio>
+  <audio id="enemy-shoot"
+    src="/assets/sounds/[downloader.vevioz.com] RETRO LASER GUN - Gaming Sound Effects HD FREE NO Copyright.mp3"></audio>
+  <audio id="player-shoot" src="/assets/sounds/laser-shot-ingame-230500.mp3"></audio>
+  <audio id="game-over-sound" src="/assets/sounds/Game Over_ Galaga '90 (TurboGrafx-16).mp3"></audio>
+</body>
+
 </html>

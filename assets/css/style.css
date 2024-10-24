@@ -16,17 +16,23 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-image: url(/assets/img/IronHacklaga.png);
+  background-size: cover;
+  background-position: center;
+ 
+}
+.main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 body {
   background-image: url(/assets/img/space\ bg.jpg);
-
   background-size: cover;
-
   background-position: center;
-
   margin: 0;
-
   padding: 0;
 }
 
@@ -41,7 +47,7 @@ img {
   justify-content: center;
   width: 220px;
   height: 55px;
-  background: linear-gradient(135deg, #4caf50, #00bcd4);
+  background: linear-gradient(135deg, #0cffe6, #5f94d5);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 30px;
@@ -51,6 +57,7 @@ img {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   text-align: center;
+  margin-top: 500px;
 }
 
 .start-btn2 {
@@ -59,7 +66,7 @@ img {
   justify-content: center;
   width: 220px;
   height: 55px;
-  background: linear-gradient(135deg, #db5d37, #3d2d2d);
+  background: linear-gradient(135deg, #ff8a65, #f70a6a);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 30px;
@@ -69,16 +76,17 @@ img {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   text-align: center;
+  margin-top: 500px;
 }
 
 .start-btn:hover {
-  background: linear-gradient(135deg, #00bcd4, #4caf50);
+  background: linear-gradient(135deg, #5f94d5, #0cffe6);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   transform: scale(1.05);
 }
 
 .start-btn2:hover {
-  background: linear-gradient(135deg, #3d2d2d, #db5d37);
+  background: linear-gradient(135deg, #f50057, #ff8a65);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   transform: scale(1.05);
 }
@@ -96,12 +104,12 @@ img {
 #game-over {
   overflow: hidden;
   position: absolute;
-  top: 50%;
+  top: 52%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 10;
   width: 600px;
-  height: 760px;
+  height: 765px;
   border: 2px solid rgba(255, 255, 255, 0.5);
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.8);
@@ -134,7 +142,7 @@ img {
   justify-content: center;
   width: 220px;
   height: 55px;
-  background: linear-gradient(135deg, #0dcaae, #daebe5);
+  background: linear-gradient(135deg, #00e5ff, #048f7c);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 30px;
@@ -147,7 +155,7 @@ img {
 }
 
 .restart-btn:hover {
-  background: linear-gradient(135deg, #daebe5, #0dcaae);
+  background: linear-gradient(135deg, #00bfa5, #00e5ff);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
   transform: scale(1.05);
 }
@@ -400,3 +408,13 @@ img {
   border-radius: 5px;
   text-align: center;
 }
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+

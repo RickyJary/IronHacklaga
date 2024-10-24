@@ -16,14 +16,14 @@ class Enemy {
     if (this.x < 0) {
       this.x = 0;
     }
-
+    this.board.appendChild(this.element);
+    
   }
   draw() {
     this.element.style.width = this.width + "px";
     this.element.style.height = this.height + "px";
     this.element.style.left = this.x + "px";
     this.element.style.bottom = this.y + "px";
-    this.board.appendChild(this.element);
     this.enemyBullets.forEach((bullet) => {
       bullet.draw();
     });

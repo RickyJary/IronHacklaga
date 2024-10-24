@@ -57,6 +57,7 @@ window.addEventListener("load", function () {
 
   startButton.addEventListener("click", function () {
     startButton.style.display = "none";
+    highscore.classList.add("hidden");
     game = new Game(board);
     game.start();
     listenGameOver();
@@ -64,6 +65,7 @@ window.addEventListener("load", function () {
 
   startButton2.addEventListener("click", function () {
     startButton2.style.display = "none";
+    highscore.classList.add("hidden");
     game = new Game(board, true);
     game.start();
     listenGameOver();
@@ -71,6 +73,7 @@ window.addEventListener("load", function () {
 
   restartButton.addEventListener("click", function () {
     restartButton.style.display = "none";
+    highscore.classList.add("hidden");
     game = new Game(board);
     game.start();
     listenGameOver();
@@ -79,6 +82,7 @@ window.addEventListener("load", function () {
 
   restartButton2.addEventListener("click", function () {
     restartButton.style.display = "none";
+    highscore.classList.add("hidden");
     game = new Game(board, true);
     game.start();
     listenGameOver();
