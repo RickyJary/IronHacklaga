@@ -6,7 +6,9 @@ window.addEventListener("load", function () {
   const board = document.querySelector("#game-board");
   const restartButton = document.querySelector("#restart-btn");
   const restartButton2 = document.querySelector("#restart-btn2");
-
+  const tutorial = document.querySelector("#tutorial")
+  const muteIcon = document.getElementById('muteIcon');
+  const bgSound = document.getElementById('bg-sound');
   const form = document.querySelector("#score-submit");
   const highscore = document.querySelector("#highscore");
   const gameOverBoard = document.querySelector("#game-over");
@@ -57,7 +59,9 @@ window.addEventListener("load", function () {
 
   startButton.addEventListener("click", function () {
     startButton.style.display = "none";
+    tutorial.classList.add("hidden");
     highscore.classList.add("hidden");
+
     game = new Game(board);
     game.start();
     listenGameOver();
@@ -65,6 +69,7 @@ window.addEventListener("load", function () {
 
   startButton2.addEventListener("click", function () {
     startButton2.style.display = "none";
+    tutorial.classList.add("hidden");
     highscore.classList.add("hidden");
     game = new Game(board, true);
     game.start();
@@ -107,5 +112,12 @@ window.addEventListener("load", function () {
       gameOverBoard.style.display = "flex";
     });
   }
- 
+  muteIcon.addEventListener('click', () => {
+    bgSound.muted = !bgSound.muted;
+    
+    muteIcon.textContent = bgSound.muted ? '🔇' : '🔊';
+  });
+
+
+
 });

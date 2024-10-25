@@ -10,7 +10,48 @@
 </head>
 
 <body>
+  <div id="muteIcon" class="mute-button">🔊</div>
+  <div class="tutorial" id="tutorial">
+    <h2>Welcome to Iron Hacklaga</h2>
+    
+    <section class="tutorial-section">
+      <h3>This is Your Ship</h3>
+      <img src="/assets/img/player.gif" alt="Player Ship" class="tutorial-image1">
+      <p>Use the <strong>arrow keys</strong> to move and <strong>spacebar</strong> to shoot.</p>
+      <img src="/assets/img/keyboard.png" alt="tutorial keys" class="tutorial-image">
+    </section>
+  
+    <section class="tutorial-section">
+      <h3>Enemy Types</h3>
+      <div class="enemy-type">
+        <img src="/assets/img/enemy.png" alt="Enemy Type 1" class="tutorial-image">
+        <p><strong>Regular Enemy</strong>: Avoid their shots!</p>
+      </div>
+      <div class="enemy-type">
+        <img src="/assets/img/moon.png" alt="Enemy Type 2" class="tutorial-image">
+        <p><strong>Asteroids</strong>: You can only DODGE them!</p>
+      </div>
+    </section>
+  
+    <section class="tutorial-section">
+      <h3>Power-Ups</h3>
+      <div class="power-up">
+        <div class="red-buff tutorial-image"></div>
+        <p><strong>Red Power-Up</strong>: Extra life.</p>
+      </div>
+      <div class="power-up">
+        <div class="green-buff tutorial-image"></div>
+        <p><strong>Green Power-Up</strong>: Increased shooting rate.</p>
+      </div>
+      <div class="power-up">
+        <div class="blue-buff tutorial-image"></div>
+        <p><strong>Blue Power-Up</strong>: Speed UP!</p>
+      </div>
+    </section>
+  </div>
+  
   <div class="container">
+    
     <div id="score"></div>
     <div id="game-board">
       
@@ -58,6 +99,7 @@
     src="/assets/sounds/[downloader.vevioz.com] RETRO LASER GUN - Gaming Sound Effects HD FREE NO Copyright.mp3"></audio>
   <audio id="player-shoot" src="/assets/sounds/laser-shot-ingame-230500.mp3"></audio>
   <audio id="game-over-sound" src="/assets/sounds/Game Over_ Galaga '90 (TurboGrafx-16).mp3"></audio>
+  <audio id="xplosound" src="/assets/sounds/8-Bit Explosion Sound Effects (Copyright Free).mp3"></audio>
 </body>
 
 </html>

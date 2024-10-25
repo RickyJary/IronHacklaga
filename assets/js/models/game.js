@@ -19,6 +19,7 @@ class Game {
     this.gameOverBoard = document.querySelector("#game-over");
     this.bgAudio = document.querySelector("#bg-sound")
     this.gameOverSound = document.querySelector("#game-over-sound")
+    this.xplosound = document.querySelector("#xplosound")
     this.scoreBoard = document.querySelector("#score")
   }
 
@@ -181,6 +182,10 @@ class Game {
       if (enemyCollided) {
         enemyCollided.element.style.backgroundImage =
           "url('/assets/img/xplosion.gif')";
+          this.xplosound.currentTime = 24.9;
+          this.xplosound.volume = 1;
+          this.xplosound.play();
+
 
           setTimeout(() => {
             this.enemies = this.enemies.filter(
@@ -189,9 +194,10 @@ class Game {
             enemyCollided.element.remove();
             enemyCollided.enemyBullets.forEach((enemyBullet) => {
               enemyBullet.element.remove();
+              this.xplosound.pause();
             });
       
-          }, 500);
+          }, 600);
 
         bullet.element.remove();
         this.player.bullets = this.player.bullets.filter(

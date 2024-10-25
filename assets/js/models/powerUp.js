@@ -14,7 +14,7 @@ class PowerUp extends Enemy {
       case "speed":
         this.element.classList.add("blue-buff");
         this.element.style.background =
-          `url('/assets/img/rockets.gif') center / contain no-repeat, 
+          `url('/assets/img/speed.png') center / contain no-repeat, 
            radial-gradient(circle, rgba(63, 206, 251, 1) 0%, rgba(238, 252, 255, 1) 100%)`;
         break;
       case "life":
