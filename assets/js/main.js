@@ -59,7 +59,7 @@ window.addEventListener("load", function () {
 
   startButton.addEventListener("click", function () {
     startButton.style.display = "none";
-    tutorial.classList.add("hidden");
+    tutorial.style.display = "none";
     highscore.classList.add("hidden");
 
     game = new Game(board);
@@ -69,7 +69,7 @@ window.addEventListener("load", function () {
 
   startButton2.addEventListener("click", function () {
     startButton2.style.display = "none";
-    tutorial.classList.add("hidden");
+    tutorial.style.display = "none";
     highscore.classList.add("hidden");
     game = new Game(board, true);
     game.start();

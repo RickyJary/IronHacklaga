@@ -92,6 +92,7 @@ class Player {
       
       this.actions.canShoot = false;
       
+      
       setTimeout(() => {
         this.actions.canShoot = true;
       }, this.shootingRate);
