@@ -198,8 +198,8 @@ class Game {
             enemyCollided.element.remove();
             enemyCollided.enemyBullets.forEach((enemyBullet) => {
               enemyBullet.element.remove();
-              this.xplosound.pause();
             });
+            this.xplosound.pause();
       
           }, 600);
 
@@ -237,6 +237,7 @@ class Game {
   gameOver() {
     clearInterval(this.interval);
     this.bgAudio.pause();
+    
     this.player.actions.canShoot = false;
     this.gameOverSound.currentTime = 15;
     this.gameOverSound.play();
