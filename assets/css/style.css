@@ -16,7 +16,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-image: url(/assets/img/IronHacklaga.png);
+  background-image: url(../img/IronHacklaga.png);
   background-size: cover;
   background-position: center;
  
@@ -29,7 +29,7 @@
 }
 
 body {
-  background-image: url(/assets/img/space\ bg.jpg);
+  background-image: url(../img/space\ bg.jpg);
   background-size: cover;
   background-position: center;
   margin: 0;
@@ -312,7 +312,7 @@ img {
 }
 
 .red-buff {
-  background-image: url('/assets/img/player.png');
+  background-image: url('../img/player.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -337,7 +337,7 @@ img {
 }
 
 .green-buff {
-  background-image: url('/assets/img/rockets.gif');
+  background-image: url('../img/rockets.gif');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -363,7 +363,7 @@ img {
 }
 
 .blue-buff {
-  background-image: url('/assets/img/speed.png');
+  background-image: url('../img/speed.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -389,14 +389,14 @@ img {
 
 .enemy {
   position: absolute;
-  background-image: url("/assets/img/enemy.png");
+  background-image: url("../img/enemy.png");
   background-size: cover;
   background-position: center;
 }
 
 .explosion {
   position: absolute;
-  background-image: url("/assets/img/xplosion2.gif");
+  background-image: url("../img/xplosion2.gif");
   background-size: cover;
   background-position: center;
 }
