@@ -1,6 +1,6 @@
 window.addEventListener("load", function () {
   let game;
-
+  
   const startButton = document.querySelector("#start-btn");
   const startButton2 = document.querySelector("#start-btn2");
   const board = document.querySelector("#game-board");
@@ -12,7 +12,71 @@ window.addEventListener("load", function () {
   const form = document.querySelector("#score-submit");
   const highscore = document.querySelector("#highscore");
   const gameOverBoard = document.querySelector("#game-over");
-
+  
+  startButton.addEventListener("click", function () {
+    startButton.style.display = "none";
+    tutorial.style.display = "none";
+    highscore.classList.add("hidden");
+  
+    game = new Game(board);
+    game.start();
+    listenGameOver();
+  });
+  
+  startButton2.addEventListener("click", function () {
+    startButton2.style.display = "none";
+    tutorial.style.display = "none";
+    highscore.classList.add("hidden");
+    game = new Game(board, true);
+    game.start();
+    listenGameOver();
+  });
+  
+  restartButton.addEventListener("click", function () {
+    restartButton.style.display = "none";
+    highscore.classList.add("hidden");
+    game = new Game(board);
+    game.start();
+    listenGameOver();
+    restartButton.style.display = "flex";
+  });
+  
+  restartButton2.addEventListener("click", function () {
+    restartButton.style.display = "none";
+    highscore.classList.add("hidden");
+    game = new Game(board, true);
+    game.start();
+    listenGameOver();
+    restartButton.style.display = "flex";
+  });
+  
+  function listenGameOver() {
+    document.addEventListener("game-over", (event) => {
+      let storedData = JSON.parse(localStorage.getItem("scoreData")) || [];
+  
+      const isHighScore =
+        storedData.length < 3 ||
+        event.detail.score > storedData[storedData.length - 1].score;
+  
+      if (isHighScore) {
+        form.classList.remove("hidden");
+      } else {
+        form.classList.add("hidden");
+        renderHighScores();
+        highscore.classList.remove("hidden");
+      }
+      gameOverBoard.style.display = "flex";
+    });
+  }
+  muteIcon.addEventListener('click', () => {
+    bgSound.muted = !bgSound.muted;
+    
+    muteIcon.textContent = bgSound.muted ? '🔇' : '🔊';
+  });
+  
+  
+  
+  });
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const formData = new FormData(form);
@@ -57,67 +121,3 @@ window.addEventListener("load", function () {
   //     localStorage.setItem('scoreData', JSON.stringify(dataArr))
   // })
 
-  startButton.addEventListener("click", function () {
-    startButton.style.display = "none";
-    tutorial.style.display = "none";
-    highscore.classList.add("hidden");
-
-    game = new Game(board);
-    game.start();
-    listenGameOver();
-  });
-
-  startButton2.addEventListener("click", function () {
-    startButton2.style.display = "none";
-    tutorial.style.display = "none";
-    highscore.classList.add("hidden");
-    game = new Game(board, true);
-    game.start();
-    listenGameOver();
-  });
-
-  restartButton.addEventListener("click", function () {
-    restartButton.style.display = "none";
-    highscore.classList.add("hidden");
-    game = new Game(board);
-    game.start();
-    listenGameOver();
-    restartButton.style.display = "flex";
-  });
-
-  restartButton2.addEventListener("click", function () {
-    restartButton.style.display = "none";
-    highscore.classList.add("hidden");
-    game = new Game(board, true);
-    game.start();
-    listenGameOver();
-    restartButton.style.display = "flex";
-  });
-
-  function listenGameOver() {
-    document.addEventListener("game-over", (event) => {
-      let storedData = JSON.parse(localStorage.getItem("scoreData")) || [];
-
-      const isHighScore =
-        storedData.length < 3 ||
-        event.detail.score > storedData[storedData.length - 1].score;
-
-      if (isHighScore) {
-        form.classList.remove("hidden");
-      } else {
-        form.classList.add("hidden");
-        renderHighScores();
-        highscore.classList.remove("hidden");
-      }
-      gameOverBoard.style.display = "flex";
-    });
-  }
-  muteIcon.addEventListener('click', () => {
-    bgSound.muted = !bgSound.muted;
-    
-    muteIcon.textContent = bgSound.muted ? '🔇' : '🔊';
-  });
-
-
-
-});
