@@ -185,23 +185,23 @@ class Game {
 
       if (enemyCollided) {
         enemyCollided.element.style.backgroundImage =
-          "url('/assets/img/xplosion.gif')";
+          "url('assets/img/xplosion.gif')";
         this.xplosound.currentTime = 24.9;
         this.xplosound.volume = 1;
         this.xplosound.play();
 
 
-        setTimeout(() => {
-          this.enemies = this.enemies.filter(
-            (enemyFromArr) => enemyFromArr !== enemyCollided
-          );
-          enemyCollided.element.remove();
-          enemyCollided.enemyBullets.forEach((enemyBullet) => {
-            enemyBullet.element.remove();
-            this.xplosound.pause();
-          });
-
-        }, 600);
+          setTimeout(() => {
+            this.enemies = this.enemies.filter(
+              (enemyFromArr) => enemyFromArr !== enemyCollided
+            );
+            enemyCollided.element.remove();
+            enemyCollided.enemyBullets.forEach((enemyBullet) => {
+              enemyBullet.element.remove();
+              this.xplosound.pause();
+            });
+      
+          }, 600);
 
         bullet.element.remove();
         this.player.bullets = this.player.bullets.filter(
@@ -237,6 +237,7 @@ class Game {
   gameOver() {
     clearInterval(this.interval);
     this.bgAudio.pause();
+    
     this.player.actions.canShoot = false;
     this.gameOverSound.currentTime = 15;
     this.gameOverSound.play();

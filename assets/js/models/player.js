@@ -81,6 +81,7 @@ class Player {
   shoot() {
     if (this.actions.canShoot) {
       const shootingSound = new Audio(this.shootingSound.src);
+      shootingSound.play();
       this.bullets.push(
         new Bullet(
           this.board,
@@ -96,7 +97,6 @@ class Player {
       setTimeout(() => {
         this.actions.canShoot = true;
       }, this.shootingRate);
-      shootingSound.play();
     }
 
 
