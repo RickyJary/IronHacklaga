@@ -9,7 +9,7 @@ class LiveCounter {
     this.shield.style.width = "30px";
     this.shield.style.height = "30px";
     this.shield.style.zIndex = "10";
-    this.shield.style.backgroundImage = "url('/assets/img/player.png')";
+    this.shield.style.backgroundImage = "url('./assets/img/player.png')";
     this.shield.style.backgroundSize = "cover";
     this.shield.style.backgroundPosition = "center";
     this.shield.style.backgroundColor = "transparent";

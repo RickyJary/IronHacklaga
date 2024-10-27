@@ -10,7 +10,7 @@ class Enemy {
     this.shootingAudio = document.querySelector("#enemy-shoot")
     this.element = document.createElement("div");
     this.element.style.position = "absolute";
-    this.element.style.backgroundImage = "url('/assets/img/enemy.png')"
+    this.element.style.backgroundImage = "url('./assets/img/enemy.png')"
     this.element.style.backgroundSize = "cover"
     this.element.style.backgroundPosition = "center";
     if (this.x < 0) {

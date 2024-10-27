@@ -15,7 +15,7 @@ class Player {
     this.element = document.createElement("div");
     this.element.style.position = "absolute";
     this.element.className = "player";
-    this.element.style.backgroundImage = "url('/assets/img/player.gif')"
+    this.element.style.backgroundImage = "url('./assets/img/player.gif')"
     this.element.style.backgroundSize = "cover";
     this.element.style.backgroundPosition = "center";
     this.element.style.backgroundColor = "transparent"

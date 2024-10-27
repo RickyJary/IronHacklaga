@@ -9,7 +9,7 @@ class Bullet {
 
     this.element = document.createElement("div");
     this.element.style.position = "absolute";
-    this.element.style.backgroundImage = "url('/assets/img/missile.gif')"
+    this.element.style.backgroundImage = "url('./assets/img/missile.gif')"
     this.element.style.backgroundSize = "cover"
     this.element.style.backgroundPosition = "center";
 
