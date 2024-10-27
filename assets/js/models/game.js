@@ -185,7 +185,7 @@ class Game {
 
       if (enemyCollided) {
         enemyCollided.element.style.backgroundImage =
-          "url('assets/img/xplosion.gif')";
+          "url('./assets/img/xplosion.gif')";
         this.xplosound.currentTime = 24.9;
         this.xplosound.volume = 1;
         this.xplosound.play();
