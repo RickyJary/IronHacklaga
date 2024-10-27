@@ -198,9 +198,9 @@ class Game {
             enemyCollided.element.remove();
             enemyCollided.enemyBullets.forEach((enemyBullet) => {
               enemyBullet.element.remove();
-              this.xplosound.pause();
             });
-      
+            this.xplosound.pause();
+            
           }, 600);
 
         bullet.element.remove();
