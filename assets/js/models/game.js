@@ -36,7 +36,7 @@ class Game {
       this.checkCollisions();
 
       this.tick++;
-      if(this.tick % this.cleanUpTick === 0){
+      if (this.tick % this.cleanUpTick === 0) {
         this._cleanup();
       }
       this.score = this.tick;
@@ -106,7 +106,7 @@ class Game {
   }
 
   checkCollisions() {
-    
+
     const enemy = this.enemies.find((enemy) => {
       return this.player.collideWith(enemy);
     });
@@ -119,7 +119,7 @@ class Game {
       return this.player.collideWith(asteroid);
     });
 
-    if (enemy) { 
+    if (enemy) {
       enemy.enemyBullets.forEach((enemyBullet) => {
         enemyBullet.element.remove();
       });
@@ -186,22 +186,22 @@ class Game {
       if (enemyCollided) {
         enemyCollided.element.style.backgroundImage =
           "url('/assets/img/xplosion.gif')";
-          this.xplosound.currentTime = 24.9;
-          this.xplosound.volume = 1;
-          this.xplosound.play();
+        this.xplosound.currentTime = 24.9;
+        this.xplosound.volume = 1;
+        this.xplosound.play();
 
 
-          setTimeout(() => {
-            this.enemies = this.enemies.filter(
-              (enemyFromArr) => enemyFromArr !== enemyCollided
-            );
-            enemyCollided.element.remove();
-            enemyCollided.enemyBullets.forEach((enemyBullet) => {
-              enemyBullet.element.remove();
-              this.xplosound.pause();
-            });
-      
-          }, 600);
+        setTimeout(() => {
+          this.enemies = this.enemies.filter(
+            (enemyFromArr) => enemyFromArr !== enemyCollided
+          );
+          enemyCollided.element.remove();
+          enemyCollided.enemyBullets.forEach((enemyBullet) => {
+            enemyBullet.element.remove();
+            this.xplosound.pause();
+          });
+
+        }, 600);
 
         bullet.element.remove();
         this.player.bullets = this.player.bullets.filter(
@@ -251,70 +251,70 @@ class Game {
     );
   }
 
-_cleanup(){
-  const boardWidth = this.board.clientWidth;
-  const boardHeight = this.board.clientHeight;
+  _cleanup() {
+    const boardWidth = this.board.clientWidth;
+    const boardHeight = this.board.clientHeight;
 
-  this.enemies = this.enemies.filter((enemy) => {
-    const isOutOfBounds =
-      enemy.x + enemy.width < 0 || 
-      enemy.x > boardWidth ||      
-      enemy.y + enemy.height < 0 ||
-      enemy.y > boardHeight;  
-
-    if (isOutOfBounds) {
-      enemy.element.remove(); 
-      return false;           
-    } else {
-      return true;            
-    }
-  });
-
-  this.asteroids = this.asteroids.filter((asteroid) => {
-    const isOutOfBounds =
-      asteroid.x + asteroid.width < 0 ||
-      asteroid.x > boardWidth ||         
-      asteroid.y + asteroid.height < 0 ||
-      asteroid.y > boardHeight;         
-
-    if (isOutOfBounds) {
-      asteroid.element.remove()
-      return false;            
-    } else {
-      return true;             
-    }
-  });
-
-  this.player.bullets = this.player.bullets.filter((bullet) => {
-    const isOutOfBounds =
-      bullet.x + bullet.width < 0 || 
-      bullet.x > boardWidth ||        
-      bullet.y + bullet.height < 0 || 
-      bullet.y > boardHeight;         
-
-    if (isOutOfBounds) {
-      bullet.element.remove(); 
-      return false;           
-    } else {
-      return true;             
-    }
-  });
-
-  this.enemies.forEach((enemy) => {
-    enemy.enemyBullets = enemy.enemyBullets.filter((bullet) => {
+    this.enemies = this.enemies.filter((enemy) => {
       const isOutOfBounds =
-        bullet.x + bullet.width < 0 || 
-        bullet.x > boardWidth ||       
-        bullet.y + bullet.height < 0 || 
-        bullet.y > boardHeight;       
+        enemy.x + enemy.width < 0 ||
+        enemy.x > boardWidth ||
+        enemy.y + enemy.height < 0 ||
+        enemy.y > boardHeight;
 
       if (isOutOfBounds) {
-        bullet.element.remove(); 
-        return false;   
+        enemy.element.remove();
+        return false;
       } else {
-        return true;  
+        return true;
       }
     });
-  });
-}
+
+    this.asteroids = this.asteroids.filter((asteroid) => {
+      const isOutOfBounds =
+        asteroid.x + asteroid.width < 0 ||
+        asteroid.x > boardWidth ||
+        asteroid.y + asteroid.height < 0 ||
+        asteroid.y > boardHeight;
+
+      if (isOutOfBounds) {
+        asteroid.element.remove()
+        return false;
+      } else {
+        return true;
+      }
+    });
+
+    this.player.bullets = this.player.bullets.filter((bullet) => {
+      const isOutOfBounds =
+        bullet.x + bullet.width < 0 ||
+        bullet.x > boardWidth ||
+        bullet.y + bullet.height < 0 ||
+        bullet.y > boardHeight;
+
+      if (isOutOfBounds) {
+        bullet.element.remove();
+        return false;
+      } else {
+        return true;
+      }
+    });
+
+    this.enemies.forEach((enemy) => {
+      enemy.enemyBullets = enemy.enemyBullets.filter((bullet) => {
+        const isOutOfBounds =
+          bullet.x + bullet.width < 0 ||
+          bullet.x > boardWidth ||
+          bullet.y + bullet.height < 0 ||
+          bullet.y > boardHeight;
+
+        if (isOutOfBounds) {
+          bullet.element.remove();
+          return false;
+        } else {
+          return true;
+        }
+      });
+    });
+  }
 }

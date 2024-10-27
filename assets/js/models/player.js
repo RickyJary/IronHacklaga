@@ -87,12 +87,12 @@ class Player {
           this.x + this.width / 2.5,
           this.y + this.height / 2.5
         )
-        
+
       );
-      
+
       this.actions.canShoot = false;
-      
-      
+
+
       setTimeout(() => {
         this.actions.canShoot = true;
       }, this.shootingRate);

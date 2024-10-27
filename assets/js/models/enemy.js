@@ -17,7 +17,7 @@ class Enemy {
       this.x = 0;
     }
     this.board.appendChild(this.element);
-    
+
   }
   draw() {
     this.element.style.width = this.width + "px";

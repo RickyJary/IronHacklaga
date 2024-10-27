@@ -114,7 +114,7 @@ window.addEventListener("load", function () {
   }
   muteIcon.addEventListener('click', () => {
     bgSound.muted = !bgSound.muted;
-    
+
     muteIcon.textContent = bgSound.muted ? '🔇' : '🔊';
   });
 

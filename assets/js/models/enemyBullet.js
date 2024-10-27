@@ -9,10 +9,10 @@ class EnemyBullet extends Bullet {
     this.element.style.backgroundImage = "url('/assets/img/fireball.gif')";
     this.element.style.backgroundSize = "cover";
     this.element.style.backgroundPosition = "center";
-   
+
 
   }
-  move(y, vy) { 
+  move(y, vy) {
     this.y -= this.vy;
   }
   draw() {
